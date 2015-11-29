@@ -1,12 +1,21 @@
 import java.util.Thread;
+import java.net.*;
+import java.io.*;
+
 // http://chimera.labs.oreilly.com/books/1234000001805/ch13.html#learnjava3-CHP-13-SECT-1.1
 public class Client implements Runnable{
 
+  Socket sock;
+  
+  public Client(InetAddress addr){
+     sock = new Socket(addr, Server.getPortNumber());
+  }
+  
   @Override
   public void Run(){
     try {
-        Socket sock = new Socket("127.0.0.1.", Server.getPortNumber());
-        ServerSocket listener = new ServerSocket( Server.getPortNumber() );
+        //Socket sock = new Socket("127.0.0.1.", Server.getPortNumber());
+        ServerSocket listener = new ServerSocket(Server.getPortNumber() );
 
         while ( !finished ) {
             Socket client = listener.accept();  // wait for connection
