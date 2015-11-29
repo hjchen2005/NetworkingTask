@@ -2,10 +2,16 @@ import java.lang.Thread;
 
 public class Server implements Runnable{
   ServerSocket serverSocket;
-  int port = 1337 ;
+  private final int port = 1337 ;
+  
+  public static int getPortNumber(){
+    return port;
+  }
+  
+  @Override
   public void run(){
     try{
-      serverSocket = new (port);
+      serverSocket = new ServerSocket (getPortNumber());
     }
     catch(IOExceptio e){
       System.out.println(e);
