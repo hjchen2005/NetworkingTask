@@ -8,6 +8,7 @@ public class Server implements Runnable  {
 	//boolean finished = false;
   ServerSocket listener;
   private final static int port = 1337 ;
+  private boolean finished = false;
   
   public static int getPortNumber(){
     return port;
@@ -22,7 +23,7 @@ public class Server implements Runnable  {
 		e1.printStackTrace();
 	}
 	  try {
-          while (true) {
+          while (!finished) {
               Socket socket = listener.accept();
               try {
                   PrintWriter out =
