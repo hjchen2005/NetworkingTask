@@ -1,4 +1,4 @@
-// Entry Point
+package Server;
 
 public class Program {
 
